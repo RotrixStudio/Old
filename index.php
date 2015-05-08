@@ -1,3 +1,4 @@
 <?php
-	echo "First"
+	echo "First\n"
+	echo "And..."
 ?>
