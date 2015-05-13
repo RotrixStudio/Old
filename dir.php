@@ -8,6 +8,7 @@ $url_arr0 = explode("?", $_SERVER['REQUEST_URI']);
 $url = str_replace(CMS_DIR, "", $url_arr0[0]);
 $url_arr = explode("/", $url);
 
+define("DOMAIN",$_SERVER['SERVER_NAME']);
 define("TEMPL_DIR","templates/".CUR_TEMPL."/");
 define("TEMPL_PATH",CMS_DIR.TEMPL_DIR);
 define("FILES_DIR","files/".CUR_TEMPL."/");

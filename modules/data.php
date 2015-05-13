@@ -8,6 +8,7 @@ class Data extends Mysqli{
 	function InsertInto($tbl, $keys_arr, $vals_arr = null){
 		$tbl = $this->Security($tbl);
 		$keys_len = count($keys_arr);
+		if(!$vals_arr) $vals_arr = &$_POST;
 		$key = $this->Security($keys_arr[0]);
 		$keys .= $key;
 		$vals .= "'".$this->Security($vals_arr[$key])."'";
@@ -16,7 +17,6 @@ class Data extends Mysqli{
 			$keys .= ",".$key;
 			$vals .= ",'".$this->Security($vals_arr[$key])."'";
 		}
-		if(!$vals_arr) $vals_arr = &$_POST;
 		// echo "INSERT INTO `$tbl` ($keys) VALUES ($vals)";
 		return $this->query("INSERT INTO `$tbl` ($keys) VALUES ($vals)");
 	}
@@ -24,13 +24,13 @@ class Data extends Mysqli{
 		$tbl = $this->Security($tbl);
 		$id = $this->Security($id);
 		$keys_len = count($keys_arr);
+		if(!$vals_arr) $vals_arr = &$_POST;
 		$key = $this->Security($keys_arr[0]);
 		$update .= $key."='".$this->Security($vals_arr[$key])."'";
 		for($i=1; $i<$keys_len; $i++){
 			$key = $this->Security($keys_arr[$i]);
 			$update .= ",".$key."='".$this->Security($vals_arr[$key])."'";
 		}
-		if(!$vals_arr) $vals_arr = &$_POST;
 		// echo "UPDATE `$tbl` SET $update WHERE id='$id'";
 		return $this->query("UPDATE `$tbl` SET $update WHERE id='$id'");
 	}

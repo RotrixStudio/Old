@@ -1,0 +1,33 @@
+// Модуль Data работает с Базой Данных
+$data = new Data($db_host,$db_user,$db_pass);
+$data->Init($db_name);
+$data->InsertInto($tbl,$keys_arr);
+$data->Update($tbl,$id,$keys_arr);
+$data->Delete($tbl,$id);
+$data->SelectOne($tbl,$id);
+$data->SelectList($select,$tbl,$where_arr,$limit0,$limit1,$orderBy,$orderSort);
+
+// Модуль Actions работает с Data и выбирает страницы для визуализации
+$actions = new Actions();
+$actions->Create($tbl);
+$actions->FirstSaveOne($tbl,$keys_arr);
+$actions->EditOne($tbl,$id);
+$actions->EditList($tbl,$limit0,$limit1,$orderBy,$orderSort);
+$actions->SaveOne($tbl,$id,$keys_arr);
+$actions->Remove($tbl,$id);
+$actions->ViewOne($tbl,$id);
+$actions->ViewList($tbl,$limit0,$limit1,$orderBy,$orderSort);
+$actions->Search($tbl,$where_arr=$_GET,$limit0,$limit1,$orderBy,$orderSort);
+$actions->GetParents(); (?)
+$actions->GetPage($page_name,$tbl=null);
+
+// Модуль Auth нужен для работы с авторизацией
+$auth = new Auth();
+$auth->Status();
+$auth->SignIn();
+$auth->SignUp();
+$auth->SignOut();
+$auth->GetKey($user_id);
+$auth->IsSetUser();
+$auth->AddToHistory();
+$auth->SignHistory();

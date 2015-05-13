@@ -12,10 +12,15 @@ define("ADMIN_PASS","1234");
 
 define("CUR_TEMPL","test");
 
+define("SALT","123"); // Соль
 define("HTML_CAN_USE","h1,h2,h3,h4,h5,h6,p,a,b,i,span,table,tr,td,th,ul,ol,li");
+define("A_KEY","A_KEY"); // 
 
 //
 $keys = Array();
+$keys['signin'] = Array("user",0,16,"length error","регулярка","error2","pass",0,16,"length error","регулярка","error2");
+
+
 $keys['blog_categories'] = Array("name");
 $keys['blog_articles'] = Array("title","category_id","tags","descr","content");
 $keys['blog_articles_select'] = "id,title,tags,descr";
